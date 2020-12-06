@@ -1,0 +1,28 @@
+Zadanie 2
+select enp.firstName, enp.lastName, enp.employeeNumber, count(*) customers_number from customers cnp 
+join employees enp on enp.employeeNumber = cnp.salesRepEmployeeNumber 
+join offices o on enp.officeCode = o.officeCode
+group by enp.employeeNumber;
+
+
+Zadanie 4a
+select year(o.orderDate) rok, count(*) ilosc from orderdetails od 
+join orders o on od.orderNumber = o.orderNumber 
+join products p on p.productCode = od.productCode 
+where productName = '1969 Harley Davidson Ultimate Chopper'
+group by rok;
+
+
+Zadanie 4b
+select year(o.orderDate) rok, sum(od.quantityOrdered) suma from orderdetails od 
+join orders o on od.orderNumber = o.orderNumber 
+join products p on p.productCode = od.productCode 
+where productName = '1969 Harley Davidson Ultimate Chopper'
+group by rok;
+
+
+Zadanie 4c
+select pl.*, count(*) productionQuantity from productlines pl
+join products p on p.productLine = pl.productLine group by p.productLine having productionQuantity > 10;
+
+https://github.com/sspychala/Zaliczenie-061220
